@@ -1,0 +1,93 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Empty title{% endblock title %}</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/sb-admin-2.css' %}" rel="stylesheet">
+    {% block extra_css %}{% endblock extra_css %}
+    <style>
+        .grayiconecolor {
+            color: #505050;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+
+            <div class="navbar-header ">
+                <a class="navbar-brand ">
+                    <div class="fa fa-cog fa-spin"></div>
+                    Service Name
+                </a>
+            </div>
+
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                Nothing Here
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="text-center divider-horizontal">
+                            <h5>Main Navigation</h5>
+                        </li>
+
+                        <li>
+                            <a {% ifequal request.path "/dashboard/" %} class="active" {% endifequal %}
+                                                                        href="{% url 'auth_dashboard' %}"><i
+                                    class="fa fa-dashboard fa-fw grayiconecolor"></i> Dashboard</a>
+                        </li>
+
+                        <li>
+                            <a {% ifequal request.path "/stock/" %} class="active" {% endifequal %}
+                                                                                 href="{% url 'stock' %}"><i
+                                    class="fa fa-key fa-fw grayiconecolor"></i> Stock</a>
+                        </li>
+
+                        <li>
+                            <a {% ifequal request.path "/orders/" %} class="active" {% endifequal %}
+                                                                         href="{% url 'orders' %}"><i
+                                    class="fa fa-users fa-fw grayiconecolor"></i> Orders</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.datetimepicker.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script>{% block extra_script %}
+{% endblock extra_script %}</script>
+</body>
+</html>
