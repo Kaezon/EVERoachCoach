@@ -55,7 +55,7 @@
 
                         <li>
                             <a {% ifequal request.path "/dashboard/" %} class="active" {% endifequal %}
-                                                                        href="{% url 'auth_dashboard' %}"><i
+                                                                        href="{% url 'dashboard' %}"><i
                                     class="fa fa-dashboard fa-fw grayiconecolor"></i> Dashboard</a>
                         </li>
 
@@ -63,12 +63,6 @@
                             <a {% ifequal request.path "/stock/" %} class="active" {% endifequal %}
                                                                                  href="{% url 'stock' %}"><i
                                     class="fa fa-key fa-fw grayiconecolor"></i> Stock</a>
-                        </li>
-
-                        <li>
-                            <a {% ifequal request.path "/orders/" %} class="active" {% endifequal %}
-                                                                         href="{% url 'orders' %}"><i
-                                    class="fa fa-users fa-fw grayiconecolor"></i> Orders</a>
                         </li>
 
                     </ul>

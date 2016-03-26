@@ -5,10 +5,9 @@ from models import StockItem
 class AddItemForm(ModelForm):
     class Meta:
         model = StockItem
-        fields = ['item_name','item_count','unit_cost']
+        fields = '__all__'
 
 class AddStockForm(ModelForm):
     class Meta:
         model = StockItem
-        fields = '__all__'
-        widgets = {'id': forms.HiddenInput()}
+        fields = ['item_count','unit_cost']

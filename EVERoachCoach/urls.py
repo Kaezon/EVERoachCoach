@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from portal.views import dashboard
-from stock.views import stock
+from stock.views import stock, editStock
 
 urlpatterns = [
-    url(r'^$', dashboard),
-    url(r'stock/', stock),
+    url(r'^$', dashboard, name='dashboard'),
+    url(r'^stock/edit/(?P<stock_id>\d+)', editStock, name='editStock'),
+    url(r'^stock/', stock, name='stock'),
     url(r'^admin/', admin.site.urls),
 ]
