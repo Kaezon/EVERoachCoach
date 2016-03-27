@@ -64,6 +64,12 @@
                                                                                  href="{% url 'stock' %}"><i
                                     class="fa fa-key fa-fw grayiconecolor"></i> Stock</a>
                         </li>
+                        
+                        <li>
+                            <a {% ifequal request.path "/orders/" %} class="active" {% endifequal %}
+                                                                                 href="{% url 'orders' %}"><i
+                                    class="fa fa-key fa-fw grayiconecolor"></i> Orders</a>
+                        </li>
 
                     </ul>
 

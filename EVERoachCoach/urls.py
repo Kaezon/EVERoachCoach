@@ -17,9 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from portal.views import dashboard
 from stock.views import stock, editStock
+from orders.views import order
 
 urlpatterns = [
     url(r'^$', dashboard, name='dashboard'),
+    url(r'^orders/', order, name='orders'),
     url(r'^stock/edit/(?P<stock_id>\d+)', editStock, name='editStock'),
     url(r'^stock/', stock, name='stock'),
     url(r'^admin/', admin.site.urls),
