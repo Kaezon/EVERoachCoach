@@ -48,3 +48,4 @@ Temporary Items
 
 EVERoachCoach/settings.py
 *.pyc
+*.sqlite3
