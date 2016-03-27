@@ -12,10 +12,11 @@ def order(request):
     if request.method == 'POST':
         form = AddOrderForm(request.POST)
         if form.is_valid():
-            stock_item = StockItem.objects.get(pk=form.item.pk)
-            if form.item_quantity < stock_item.item_count:
-                form.order_price = form.item_quantity * stock_item.unit_price
-                stock_item -= form.item_quantity
+            order_instance = form.save(commit=False)
+            stock_item = order_instance.item
+            if order_instance.item_quantity < stock_item.item_count:
+                order_instance.order_price = order_instance.item_quantity * stock_item.unit_cost
+                stock_item.item_count -= order_instance.item_quantity
                 stock_item.save()
                 form.save()
             else:
