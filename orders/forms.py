@@ -7,7 +7,7 @@ from .models import *
 class AddOrderForm(ModelForm):
     class Meta:
         model = Order
-        exclude = ('order_price',)
+        exclude = ('order_price','is_paid')
     def __init__(self, *args, **kwargs):
         super(AddOrderForm, self).__init__(*args, **kwargs)
         self.fields['item'].queryset = StockItem.objects.all()

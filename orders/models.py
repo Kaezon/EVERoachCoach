@@ -8,3 +8,4 @@ class Order(models.Model):
     item = models.ForeignKey(StockItem, on_delete=models.CASCADE)
     item_quantity = models.PositiveIntegerField()
     order_price = models.DecimalField(max_digits=17, decimal_places=2)
+    is_paid = models.BooleanField()

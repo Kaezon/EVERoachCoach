@@ -8,7 +8,7 @@ from .forms import *
 from .models import *
 
 def order(request):
-    orders = Order.objects.all()
+    orders = Order.objects.filter(is_paid=False)
     if request.method == 'POST':
         form = AddOrderForm(request.POST)
         if form.is_valid():
@@ -17,6 +17,7 @@ def order(request):
             if order_instance.item_quantity < stock_item.item_count:
                 order_instance.order_price = order_instance.item_quantity * stock_item.unit_cost
                 stock_item.item_count -= order_instance.item_quantity
+                order_instance.is_paid = False
                 stock_item.save()
                 form.save()
             else:
@@ -25,3 +26,9 @@ def order(request):
     else:
         addOrderForm = AddOrderForm()
         return render(request, 'public/orders.html', {'addOrderForm': addOrderForm, 'orders': orders}, context_instance=RequestContext(request))
+        
+def paidOrder(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    order.is_paid = True
+    order.save()
+    return HttpResponseRedirect('/orders/')
