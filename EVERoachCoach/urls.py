@@ -17,10 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from portal.views import dashboard
 from stock.views import stock, editStock
-from orders.views import order, paidOrder
+from orders.views import order, paidOrder, cancelOrder
 
 urlpatterns = [
     url(r'^$', dashboard, name='dashboard'),
+    url(r'orders/cancel/(?P<order_id>\d+)', cancelOrder, name='cancelOrder'),
     url(r'orders/paid/(?P<order_id>\d+)', paidOrder, name='paidOrder'),
     url(r'^orders/', order, name='orders'),
     url(r'^stock/edit/(?P<stock_id>\d+)', editStock, name='editStock'),

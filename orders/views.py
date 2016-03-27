@@ -26,6 +26,14 @@ def order(request):
     else:
         addOrderForm = AddOrderForm()
         return render(request, 'public/orders.html', {'addOrderForm': addOrderForm, 'orders': orders}, context_instance=RequestContext(request))
+
+def cancelOrder(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    stock_item = order.item
+    stock_item.item_count += order.item_quantity
+    stock_item.save()
+    order.delete()
+    return HttpResponseRedirect('/orders/')
         
 def paidOrder(request, order_id):
     order = get_object_or_404(Order, pk=order_id)

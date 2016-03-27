@@ -42,6 +42,11 @@
                                                 Paid
                                             </button>
                                         </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-primary" onclick='window.location.replace("cancel/{{ order.id }}")'>
+                                                Cancel
+                                            </button>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </table>
