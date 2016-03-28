@@ -1,5 +1,6 @@
 import requests
 import forms
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.shortcuts import HttpResponseRedirect, render, get_object_or_404
