@@ -1,5 +1,4 @@
 from django.forms import ModelForm, ModelChoiceField
-import models
 from django.forms.models import inlineformset_factory
 from stock.models import StockItem
 from .models import *
