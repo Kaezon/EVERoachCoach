@@ -21,10 +21,10 @@ from orders.views import order, paidOrder, cancelOrder
 
 urlpatterns = [
     url(r'^$', dashboard, name='dashboard'),
-    url(r'orders/cancel/(?P<order_id>\d+)', cancelOrder, name='cancelOrder'),
-    url(r'orders/paid/(?P<order_id>\d+)', paidOrder, name='paidOrder'),
-    url(r'^orders/', order, name='orders'),
+    url(r'orders/cancel/$', cancelOrder, name='cancelOrder'),
+    url(r'orders/paid/$', paidOrder, name='paidOrder'),
+    url(r'^orders/$', order, name='orders'),
     url(r'^stock/edit/(?P<stock_id>\d+)', editStock, name='editStock'),
-    url(r'^stock/', stock, name='stock'),
+    url(r'^stock/$', stock, name='stock'),
     url(r'^admin/', admin.site.urls),
 ]
