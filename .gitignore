@@ -46,6 +46,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+venv
 EVERoachCoach/settings.py
 *.pyc
 *.sqlite3
