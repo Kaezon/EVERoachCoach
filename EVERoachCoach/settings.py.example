@@ -129,4 +129,7 @@ STATIC_URL = '/static/'
 
 SERVICE_NAME = os.environ.get('APP_SERVICE_NAME', '')
 
+# Markup should be a decimal value representing a percent value
+# i.e. 0.1
+
 MARKUP_VALUE = os.environ.get('APP_MARKUP_VALUE', '')
