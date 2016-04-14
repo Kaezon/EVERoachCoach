@@ -84,6 +84,7 @@
             {% endblock content %}
         </div>
     </div>
+
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/jquery.datetimepicker.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -91,8 +92,8 @@
 <script language="javascript" type="text/javascript">
     var csrftoken = Cookies.get('csrftoken');
     function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
     }
     $.ajaxSetup({
         beforeSend: function(xhr, settings) {
@@ -102,7 +103,7 @@
         }
     });
 </script>
-<script>{% block extra_script %}
-{% endblock extra_script %}</script>
+{% block extra_script %}
+{% endblock extra_script %}
 </body>
 </html>
