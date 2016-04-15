@@ -2,7 +2,7 @@ import requests
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from django.shortcuts import HttpResponseRedirect, render, get_object_or_404
+from django.shortcuts import HttpResponseRedirect, render, get_object_or_404, HttpResponse
 from .forms import *
 from .models import *
 
@@ -32,3 +32,14 @@ def editStock(request, stock_id):
         return HttpResponseRedirect(reverse(stock))
     else:
         raise Http404("Stock item does not exist")
+
+def deleteStock(request):
+    if request.method == 'POST':
+        response = HttpResponse()
+        item_id = request.POST['item_id']
+        stock_item = get_object_or_404(StockItem, pk=item_id)
+        stock_item.delete()
+        response.status_code = 200
+        return response
+    else:
+        Http404("Why are you here?")

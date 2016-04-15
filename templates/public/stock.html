@@ -34,6 +34,7 @@
                                     <td class="text-center">Quantity Available</td>
                                     <td class="text-center">Cost Per Unit</td>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                                 {% for item in items %}
                                     <tr>
@@ -43,6 +44,11 @@
                                         <td class="text-center">
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStockModal" onclick='$("#addStockForm").attr("action","edit/{{ item.id }}")'>
                                                 Add Stock
+                                            </button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" onclick='$.post("delete/", {item_id: "{{ item.id }}"}, function(){ location.reload() })'>
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>

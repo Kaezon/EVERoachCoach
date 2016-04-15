@@ -26,7 +26,7 @@ def order(request):
                 stock_item.save()
                 form.save()
             else:
-                return HttpResponseServerError('You cannot order more than is available!')
+                return HttpResponseServerError(('You cannot order more than is available: {0} units').format(stock_item.item_count))
         return HttpResponseRedirect(reverse(order))
     else:
         addOrderForm = AddOrderForm()

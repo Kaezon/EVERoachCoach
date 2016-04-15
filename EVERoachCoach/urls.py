@@ -16,14 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from portal.views import dashboard
-from stock.views import stock, editStock
+from stock.views import stock, editStock, deleteStock
 from orders.views import order, paidOrder, cancelOrder
 
 urlpatterns = [
     url(r'^$', dashboard, name='dashboard'),
-    url(r'orders/cancel/$', cancelOrder, name='cancelOrder'),
-    url(r'orders/paid/$', paidOrder, name='paidOrder'),
+    url(r'^orders/cancel/$', cancelOrder, name='cancelOrder'),
+    url(r'^orders/paid/$', paidOrder, name='paidOrder'),
     url(r'^orders/$', order, name='orders'),
+    url(r'^stock/delete/$', deleteStock, name='deleteStock'),
     url(r'^stock/edit/(?P<stock_id>\d+)', editStock, name='editStock'),
     url(r'^stock/$', stock, name='stock'),
     url(r'^admin/', admin.site.urls),
