@@ -3,43 +3,45 @@ var addStockModal = $('#addStockModal')
 var itemForm =  $('#addItemForm');
 var stockForm = $('#addStockForm');
 $( document ).ready(
-    itemForm.submit(function() {
+    addItemModal.submit(function() {
+        addItemModal.find(".modalResponse").first().empty().attr('class','modalResponse');
         $.ajax({
             type: itemForm.attr('method'),
             url: itemForm.attr('action'),
             data: itemForm.serialize(),
             success: function(data) {
-                  addItemModal.modal('hide')
-                  location.reload()
+                  addItemModal.modal('hide');
+                  location.reload();
             },
             error: function(data) {
-                itemForm.children(".modalResponse").empty().append('<a href="#" class="close" data-dismiss="alert">&times;</a>')
-                itemForm.children(".modalResponse").append(data.responseText)
-                itemForm.children(".modalResponse").addClass("alert alert-danger fade in");
+                addItemModal.find(".modalResponse").first().empty().append('<a href="#" class="close" data-dismiss="alert">&times;</a>');
+                addItemModal.find(".modalResponse").first().append(data.responseText);
+                addItemModal.find(".modalResponse").first().addClass("alert alert-danger fade in");
             }
         });
         return false;
     }),
     stockForm.submit(function() {
+        addStockModal.find(".modalResponse").first().empty().attr('class','modalResponse');
         $.ajax({
             type: stockForm.attr('method'),
             url: stockForm.attr('action'),
             data: stockForm.serialize(),
             success: function(data) {
-                  addStockModal.modal('hide')
-                  location.reload()
+                  addStockModal.modal('hide');
+                  location.reload();
             },
             error: function(data) {
-                stockForm.children(".modalResponse").empty().append('<a href="#" class="close" data-dismiss="alert">&times;</a>')
-                stockForm.children(".modalResponse").append(data.responseText)
-                stockForm.children(".modalResponse").addClass("alert alert-danger fade in");
+                addStockModal.find(".modalResponse").first().empty().append('<a href="#" class="close" data-dismiss="alert">&times;</a>');
+                addStockModal.find(".modalResponse").first().append(data.responseText);
+                addStockModal.find(".modalResponse").first().addClass("alert alert-danger fade in");
             }
         });
         return false;
     }),
-    $("modal").each( function() {
+    $(".modal").each( function() {
         $(this).on('hidden.bs.modal', function () {
-            $(this).children(".modalResponse").empty().attr('class','modalResponse')
+            $(this).find(".modalResponse").first().empty().attr('class','modalResponse');
         })
     })
 );
