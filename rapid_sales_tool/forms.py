@@ -1,7 +1,16 @@
 from django.forms import ModelForm, ModelChoiceField
 from django.forms.models import inlineformset_factory
-from stock.models import StockItem
 from .models import *
+
+class AddItemForm(ModelForm):
+    class Meta:
+        model = StockItem
+        fields = '__all__'
+
+class AddStockForm(ModelForm):
+    class Meta:
+        model = StockItem
+        fields = ['item_count','unit_cost']
 
 class AddOrderForm(ModelForm):
     class Meta:

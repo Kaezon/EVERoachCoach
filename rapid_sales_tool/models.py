@@ -1,7 +1,11 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from stock.models import StockItem
+
+class StockItem(models.Model):
+    item_name = models.CharField(max_length=255)
+    item_count = models.PositiveIntegerField()
+    unit_cost = models.DecimalField(max_digits=17, decimal_places=2)
 
 class Order(models.Model):
     customer_name = models.CharField(max_length=64)
