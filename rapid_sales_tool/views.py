@@ -30,7 +30,7 @@ def order(request):
         return HttpResponseRedirect(reverse(order))
     else:
         addOrderForm = AddOrderForm()
-        return render(request, 'public/orders.html', {'addOrderForm': addOrderForm, 'orders': orders, 'service_name': settings.SERVICE_NAME}, context_instance=RequestContext(request))
+        return render(request, 'rapid_sales_tool/orders.html', {'addOrderForm': addOrderForm, 'orders': orders, 'service_name': settings.SERVICE_NAME}, context_instance=RequestContext(request))
 
 def cancelOrder(request):
     if request.method == 'POST':
@@ -68,7 +68,7 @@ def stock(request):
     else:
         addItemForm = AddItemForm()
         addStockForm = AddStockForm()
-        return render(request, 'public/stock.html', {'addItemForm': addItemForm, 'addStockForm': addStockForm, 'items': items, 'service_name': settings.SERVICE_NAME}, context_instance=RequestContext(request))
+        return render(request, 'rapid_sales_tool/stock.html', {'addItemForm': addItemForm, 'addStockForm': addStockForm, 'items': items, 'service_name': settings.SERVICE_NAME}, context_instance=RequestContext(request))
     
 def editStock(request, stock_id):
     stock_item = get_object_or_404(StockItem, pk=stock_id)
