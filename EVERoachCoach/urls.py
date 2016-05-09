@@ -13,19 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
 from portal.views import dashboard
-from stock.views import stock, editStock, deleteStock
-from orders.views import order, paidOrder, cancelOrder
 
 urlpatterns = [
     url(r'^$', dashboard, name='dashboard'),
-    url(r'^orders/cancel/$', cancelOrder, name='cancelOrder'),
-    url(r'^orders/paid/$', paidOrder, name='paidOrder'),
-    url(r'^orders/$', order, name='orders'),
-    url(r'^stock/delete/$', deleteStock, name='deleteStock'),
-    url(r'^stock/edit/(?P<stock_id>\d+)', editStock, name='editStock'),
-    url(r'^stock/$', stock, name='stock'),
+    url(r'^rst/', include('rapid_sales_tool.urls')),
     url(r'^admin/', admin.site.urls),
 ]
